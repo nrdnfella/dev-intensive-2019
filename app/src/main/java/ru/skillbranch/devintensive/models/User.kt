@@ -13,7 +13,10 @@ data class User (
     val lastVisit: Date? = null,
     val isOnline: Boolean = false
 ){
-    constructor(id: String, firstName: String?, lastName: String?): this (
+
+    private constructor(builder: Builder) : this(builder.id, builder.firstName, builder.lastName, builder.avatar, builder.rating, builder.respect, builder.lastVisit, builder.isOnline)
+
+    private constructor(id: String, firstName: String?, lastName: String?): this (
         id,
         firstName,
         lastName,
@@ -25,6 +28,7 @@ data class User (
         firstName = "John",
         lastName = "Ivanovich $id"
     )
+
 
     init {
         println("hello, it's me")
@@ -51,5 +55,27 @@ data class User (
             val (firstName, lastName) = Utils.parseFullName(fullName)
             return User(id="$lastId", firstName = firstName, lastName = lastName)
         }
+    }
+
+    class Builder(
+        var id: String = "0",
+        var firstName: String? = null,
+        var lastName: String? = null,
+        var avatar: String? = null,
+        var rating: Int = 0,
+        var respect: Int = 0,
+        var lastVisit: Date? = null,
+        var isOnline: Boolean = false
+    ){
+        fun id(id: String) = apply { this.id = id }
+        fun firstName(firstName: String?) = apply { this.firstName = firstName }
+        fun lastName(lastName: String?) = apply { this.lastName = lastName }
+        fun avatar(avatar: String?) = apply { this.avatar = avatar }
+        fun rating(rating: Int) = apply { this.rating = rating }
+        fun respect(respect: Int) = apply { this.respect = respect }
+        fun lastVisit(lastVisit: Date?) = apply { this.lastVisit = lastVisit }
+        fun isOnline(isOnline: Boolean) = apply { this.isOnline = isOnline}
+
+        fun build() = User(this)
     }
 }
