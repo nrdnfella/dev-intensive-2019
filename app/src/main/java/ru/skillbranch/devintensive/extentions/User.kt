@@ -3,8 +3,6 @@ package ru.skillbranch.devintensive.extentions
 import ru.skillbranch.devintensive.models.User
 import ru.skillbranch.devintensive.models.UserView
 import ru.skillbranch.devintensive.utils.Utils
-import java.util.*
-import java.util.Collections.replaceAll
 
 fun User.toUserView() : UserView{
 
@@ -14,10 +12,11 @@ fun User.toUserView() : UserView{
     return UserView(
         id,
         fullName = "$firstName $lastName",
-        nickName = "$nickName",
+        nickName = nickName,
         initials = "$initials",
         avatar = "$avatar",
-        status = "$status")
+        status = status
+    )
 }
 
 

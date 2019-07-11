@@ -34,7 +34,7 @@ data class User (
         println("hello, it's me")
     }
 
-    fun printMe():Unit{
+    fun printMe() {
         println("""
             id:$id
             firstName:$firstName
