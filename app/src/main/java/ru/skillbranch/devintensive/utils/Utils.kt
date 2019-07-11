@@ -26,4 +26,6 @@ object Utils {
         val initials = "${firstName?.trim()?.take(1)?.capitalize() ?: ""}${lastName?.trim()?.take(1)?.capitalize() ?: ""}"
         return if (initials.isEmpty()) null else initials
     }
+
+    fun division(n: Int) = n * 205 shr 11
 }
