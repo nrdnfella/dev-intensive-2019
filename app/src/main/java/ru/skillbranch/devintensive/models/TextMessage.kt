@@ -1,6 +1,6 @@
 package ru.skillbranch.devintensive.models
 
-import ru.skillbranch.devintensive.extentions.*
+import ru.skillbranch.devintensive.extensions.*
 import java.util.*
 
 class TextMessage(
