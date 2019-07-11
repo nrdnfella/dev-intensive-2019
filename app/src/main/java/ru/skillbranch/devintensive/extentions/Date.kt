@@ -29,50 +29,42 @@ fun Date.add(value:Int, units: TimeUnits = TimeUnits.SECOND): Date{
     return this
 }
 
-interface ITimeUnits {
-    fun plural(value: Int): String
-}
+enum class TimeUnits {
+    SECOND,
+    MINUTE,
+    HOUR,
+    DAY;
 
-
-enum class TimeUnits  : ITimeUnits {
-    SECOND { override fun plural(value: Int): String {
-            return "$value ${when (value.toString().take(value.toString().length)) {
+    fun plural(value: Int): String {
+        return when (this) {
+            SECOND -> "$value ${when (value.toString().take(value.toString().length)) {
                 "1" -> "секунду"
                 "2", "3", "4" -> "секунды"
                 else -> "секунд"
-                }
-                }"
-    }}
-    ,
-    MINUTE{
-        override fun plural(value: Int): String {
-            return "$value ${when (value.toString().take(value.toString().length)) {
+            }
+            }"
+            MINUTE -> "$value ${when (value.toString().take(value.toString().length)) {
                 "1" -> "минуту"
                 "2", "3", "4" -> "минуты"
                 else -> "минут"
             }
             }"
-        }},
-    HOUR{
-        override fun plural(value: Int): String {
-            return "$value ${when (value.toString().take(value.toString().length)) {
+            HOUR -> "$value ${when (value.toString().take(value.toString().length)) {
                 "1" -> "час"
                 "2", "3", "4" -> "часа"
                 else -> "часов"
             }
             }"
-        }},
-    DAY{
-        override fun plural(value: Int): String {
-            return "$value ${when (value.toString().take(value.toString().length)) {
+            DAY -> "$value ${when (value.toString().take(value.toString().length)) {
                 "1" -> "день"
                 "2", "3", "4" -> "дня"
                 else -> "дней"
             }
             }"
-        }}
-
+        }
+    }
 }
+
     fun Date.humanizeDiff(): String {
         val date: Long = this.time
         val now: Long = Date().time
