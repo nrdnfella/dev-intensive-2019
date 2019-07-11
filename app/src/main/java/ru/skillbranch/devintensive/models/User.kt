@@ -26,7 +26,7 @@ data class User (
     constructor(id: String):this (
         id,
         firstName = "John",
-        lastName = "Ivanovich $id"
+        lastName = "Ivanovich"
     )
 
 

@@ -7,9 +7,9 @@ object Utils {
         "х" to "h", "ц" to "c", "ч" to "ch", "ш" to "sh", "щ" to "sh'", "ъ" to "", "ы" to "i", "ь" to "", "э" to "e", "ю" to "yu", "я" to "ya")
 
     fun parseFullName(fullName:String?):Pair<String?, String?>{
-        val parts : List<String>? = fullName?.split(" ")
-        val firstName = parts?.getOrNull(0)
-        val lastName = parts?.getOrNull(1)
+        val parts = fullName?.trim()?.split(" ")
+        val firstName = parts?.getOrNull(0)?.ifBlank { null }
+        val lastName = parts?.getOrNull(1)?.ifBlank { null }
         return firstName to lastName
     }
 

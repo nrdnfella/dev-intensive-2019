@@ -37,7 +37,7 @@ interface ITimeUnits {
 enum class TimeUnits  : ITimeUnits {
     SECOND { override fun plural(value: Int): String {
             return "$value ${when (value.toString().take(value.toString().length)) {
-                "1" -> "секунда"
+                "1" -> "секунду"
                 "2", "3", "4" -> "секунды"
                 else -> "секунд"
                 }
